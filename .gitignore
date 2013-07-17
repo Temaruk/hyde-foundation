@@ -5,6 +5,7 @@ venv
 
 #hyde stuff
 .hyde_deps
+site/deploy
 
 # C extensions
 *.so
