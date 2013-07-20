@@ -5,6 +5,7 @@ media_url: /media
 # this ensures .js files will not be run through the Jinja2 processor
 simple_copy:
     - media/*.js
+    - media/*.scss
 
 base_url: /
 # If your site is nested inside of a bigger one, you can use media_url and
