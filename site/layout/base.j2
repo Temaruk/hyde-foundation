@@ -1,16 +1,28 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
     <head>
-        <link href="http://fonts.googleapis.com/css?family=Anton" rel="stylesheet" type="text/css">
-        <title>Hyde Starter Kit {{ resource.meta.title_ending }}</title>
         <meta charset="utf-8" />
-        <link rel="stylesheet" href="{{ media_url('stylesheets/foundation.css') }}">
-        <link rel="stylesheet" href="{{ media_url('stylesheets/ie.css') }}">
-        <link rel="stylesheet" href="{{ media_url('stylesheets/app.css') }}">
+        <meta name="viewport" content="width=device-width" />
+        <title>Hyde Starter Kit {{ resource.meta.title_ending }}</title>
+
+        <link href="http://fonts.googleapis.com/css?family=Anton" rel="stylesheet" type="text/css">
+
+        {# We are using CSS version, only link these 2 files. #}
+        <link rel="stylesheet" href="{{ media_url('css/normalize.css') }}">
+        <link rel="stylesheet" href="{{ media_url('css/foundation.css') }}">
+
+        {# You may add app.css to use for your overrides if you like. #}
+        <link rel="stylesheet" href="{{ media_url('css/app.css') }}">
+
         <!--[if lt IE 9]>
-        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js">
-        </script>
+        <link rel="stylesheet" href="{{ media_url('stylesheets/ie.css') }}">
         <![endif]-->
+
+        {# Modernizr acts as a shim for HTML5 elements for older browsers as
+           well as detection for mobile devices.
+        #}
+        <script src="{{ media_url('js/vendor/custom.modernizr.js') }}"></script>
     </head>
     <body>
         <header class="row">
@@ -50,6 +62,35 @@
                 for <a href="{{ project.url }}">{{ project.name }}</a></p>
             </aside>
         </div>
+
+        {# Check for Zepto support, load jQuery if necessary #}
+        <script>
+            document.write('<script src="{{ media_url('js/vendor/') }}'
+                    + ('__proto__' in {} ? 'zepto' : 'jquery')
+                    + '.js"><\/script>');
+        </script>
+
+        {# Load js individually #}
+        <script src="{{ media_url('js/foundation/foundation.js') }}"></script>
+        <script src="{{ media_url('js/foundation/foundation.alerts.js') }}"></script>
+        <script src="{{ media_url('js/foundation/foundation.clearing.js') }}"></script>
+        <script src="{{ media_url('js/foundation/foundation.cookie.js') }}"></script>
+        <script src="{{ media_url('js/foundation/foundation.dropdown.js') }}"></script>
+        <script src="{{ media_url('js/foundation/foundation.forms.js') }}"></script>
+        <script src="{{ media_url('js/foundation/foundation.joyride.js') }}"></script>
+        <script src="{{ media_url('js/foundation/foundation.magellan.js') }}"></script>
+        <script src="{{ media_url('js/foundation/foundation.orbit.js') }}"></script>
+        <script src="{{ media_url('js/foundation/foundation.placeholder.js') }}"></script>
+        <script src="{{ media_url('js/foundation/foundation.reveal.js') }}"></script>
+        <script src="{{ media_url('js/foundation/foundation.section.js') }}"></script>
+        <script src="{{ media_url('js/foundation/foundation.tooltips.js') }}"></script>
+        <script src="{{ media_url('js/foundation/foundation.topbar.js') }}"></script>
+        <script src="{{ media_url('js/foundation/foundation.interchange.js') }}"></script>
+
+        {# It is recommended that you initialize Foundation at the end of the page <body>. #}
+        <script>
+            $(document).foundation();
+        </script>
 
         {# Some parts of the web are not needed for development and can
            wait for production (ex. analytics). They can be included in
